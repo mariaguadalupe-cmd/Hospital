@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Salud Integral</title>
+
+<!-- ICONOS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef4f8;
+}
+
+/* HEADER */
+header {
+    background: #0a3d62;
+    color: white;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    justify-content: center;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #74c0fc;
+}
+
+/* SECCIONES */
+section {
+    padding: 50px;
+    display: none;
+    animation: fade 0.4s ease;
+}
+
+.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 256px 197px;
+    background: linear-gradient(rgba(10,61,98,0.8), rgba(10,61,98,0.8)),
+    url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #0072ff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card i {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #0a3d62;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    background: #B05A9F;
+}
+
+/* SERVICIOS */
+.servicio img {
+    width:100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* CARRUSEL */
+.carrusel {
+    width: 100%;
+    max-width: 500px;
+    height: 250px;
+    overflow: hidden;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.slides {
+    display: flex;
+    animation: slide 18s infinite;
+}
+
+.slide {
+    width: 100%;
+    flex: 0 0 100%; 
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 220px; /* más equilibrado */
+    object-fit: cover;
+}
+
+/* ANIMACIÓN */
+@keyframes slide {
+    0%, 16% {transform: translateX(0);}
+    20%, 36% {transform: translateX(-100%);}
+    40%, 56% {transform: translateX(-200%);}
+    60%, 76% {transform: translateX(-300%);}
+    80%, 96% {transform: translateX(-400%);}
+    100% {transform: translateX(-500%);}
+}
+/* TEXTO SOBRE IMAGEN */
+.info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+#nosotros {
+    max-width: 900px;
+    margin: auto;
+}
+
+#nosotros h2 {
+    text-align: center;
+}
+
+#nosotros p {
+    text-align: justify;
+    line-height: 1.6;
+}	
+/* ESPECIALIDADES */
+.especialidades {
+    padding: 50px;
+    text-align: center;
+}
+
+.especialidades h2 {
+    color: #0a3d62;
+    margin-bottom: 30px;
+}
+
+.grid-especialidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.especialidad {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.especialidad i {
+    font-size: 35px;
+    color: #0a6ebd;
+    margin-bottom: 10px;
+}
+
+.especialidad:hover {
+    transform: translateY(-8px);
+    background: #0a6ebd;
+    color: white;
+}
+
+.especialidad:hover i {
+    color: white;
+}
+
+/* IMÁGENES ESPECIALIDADES */
+.especialidad-card img,
+.especialidades img,
+.especialidades-card img,
+.especialidades-gine img,
+.especilidades img {
+    width: 100%;
+    max-width: 350px;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 10px;
+}
+/* DOCTORES */
+.doctor {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.doctor img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor h4 {
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+.doctor p {
+    font-size: 12px;
+    margin: 0;
+}
+.doctor {
+    max-width: 900px;
+    margin: auto;
+}
+.contenedor-doctores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.doctor {
+    width: 180px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.doctor img {
+    width:90px;
+    height:90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.doctor:hover {
+    transform: translateY(-10px);
+}
+#nosotros h2 {
+    text-align: center;
+}
+
+#nosotros p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* FORM */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+}
+
+input, textarea, select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #0a3d62;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #145da0;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+	</style>
+	</head>
+	<body>
+<header>
+<h1>Hospital Salud Integral</h1>
+<nav>
+<ul>
+<li><a href="#" onclick="show('inicio')">Inicio</a></li>
+<li><a href="#" onclick="show('nosotros')">Nosotros</a></li>
+<li><a href="#" onclick="show('especialidades')">Especialidades</a></li>
+<li><a href="#" onclick="show('doctores')">Doctores</a></li>
+<li><a href="#" onclick="show('expediente')">Expediente</a></li>
+<li><a href="#" onclick="show('citas')">Citas</a></li>
+<li><a href="#" onclick="show('contacto')">Contacto</a></li>
+	
+</ul>
+</nav>
+</header>
+
+<!-- INICIO -->
+
+<section id="inicio" class="active hero">
+<h2>Tu salud, nuestra prioridad</h2>
+<p>Atención médica profesional con tecnología avanzada</p>
+
+<div class="carrusel">
+  <div class="slides">
+
+    <div class="slide">
+      <img src="servicios/1.jpeg">
+      <div class="info">
+        <h3>Urgencias</h3>
+        <p>Atención médica inmediata 24/7.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="servicios/2.jpg">
+      <div class="info">
+        <h3>Consulta General</h3>
+        <p>Diagnóstico y atención médica básica.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="servicios/3.jpg">
+      <div class="info">
+        <h3>Laboratorio</h3>
+        <p>Análisis clínicos y estudios médicos.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="servicios/4.jpg">
+      <div class="info">
+        <h3>Imagenología</h3>
+        <p>Rayos X, ultrasonido y más.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="servicios/5.jpg">
+      <div class="info">
+        <h3>Especialistas</h3>
+        <p>Médicos expertos en distintas áreas.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="servicios/6.jpg">
+      <div class="info">
+        <h3>Hospitalización</h3>
+        <p>Atención integral con monitoreo constante.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+	
+	<!-- SERVICIOS -->
+<section id="urgencias" class="servicio"></section>
+
+<section id="consulta-general" class="servicio"></section>
+
+<section id="laboratorio-clinico" class="servicio"></section>
+
+<section id="imagenologia" class="servicio"></section>
+
+<section id="especialistas" class="servicio"></section>
+
+<section id="hospitalizacion" class="servicio"> </section>
+	
+<!-- NOSOTROS -->
+
+<section id="nosotros">
+
+<h2>Historia</h2>
+<p>El hospital fue fundado en el año 1976 con el propósito de brindar atención médica integral, accesible y de calidad a la comunidad. Desde sus inicios, se ha enfocado en ofrecer servicios confiables, apoyándose en tecnología moderna y un equipo de profesionales altamente capacitados.
+
+A lo largo del tiempo, el hospital ha crecido y evolucionado, incorporando nuevas especialidades, mejorando sus instalaciones y fortaleciendo su compromiso con la salud y el bienestar de sus pacientes.</p>
+<h2>Misión</h2>
+<p>Brindar servicios de salud integrales con calidad, calidez y profesionalismo, enfocados en la prevención, diagnóstico y tratamiento oportuno, garantizando el bienestar y la satisfacción de nuestros pacientes mediante un equipo médico altamente capacitado y tecnología confiable.</p>
+<h2>Visión</h2>
+<p>Ser una institución de salud reconocida por su excelencia, innovación y compromiso con la atención médica, posicionándonos como una opción confiable para la comunidad, destacando por nuestros estándares de calidad y mejora continua.</p>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades" class="especialidades">
+
+  <h2>Especialidades Médicas</h2>
+
+  <div class="grid-especialidades">
+
+    <div class="especialidad" onclick="show('cardio')">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <h3>Cardiología</h3>
+    </div>
+
+    <div class="especialidad" onclick="show('pediatria')">
+      <i class="fa-solid fa-child"></i>
+      <h3>Pediatría</h3>
+    </div>
+
+    <div class="especialidad" onclick="show('ginecologia')">
+      <i class="fa-solid fa-venus"></i>
+      <h3>Ginecología</h3>
+    </div>
+
+    <div class="especialidad" onclick="show('dermatologia')">
+      <i class="fa-solid fa-hand-dots"></i>
+      <h3>Dermatología</h3>
+    </div>
+
+    <div class="especialidad" onclick="show('traumatologia')">
+      <i class="fa-solid fa-bone"></i>
+      <h3>Traumatología</h3>
+    </div>
+
+   <div class="especialidad" onclick="show('neurologia')">
+      <i class="fa-solid fa-brain"></i>
+      <h3>Neurología</h3>
+    </div>
+
+    <div class="especialidad" onclick="show('oftalmologia')">
+      <i class="fa-solid fa-eye"></i>
+      <h3>Oftalmología</h3>
+    </div>
+
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+
+<section id="cardio" class="especialidad-card">
+<img src="https://medicasur.com.mx/work/models/ms/Resource/4106/7/images/ecocardiogramaBn.png"> 
+<h2>Cardiología</h2>
+<p>La cardiología es la rama de la medicina encargada del estudio, diagnóstico, tratamiento y prevención de las enfermedades del corazón y del sistema circulatorio. Es fundamental para la detección temprana de padecimientos cardiovasculares, que representan una de las principales causas de mortalidad a nivel mundial.  
+<br><br>
+Entre las enfermedades más comunes que trata se encuentran la hipertensión arterial, insuficiencia cardíaca, arritmias, angina de pecho, infarto agudo de miocardio y enfermedades congénitas del corazón.</p>
+</section>
+		
+	<section id="pediatria" class="especialidades-card">
+<img src="https://farmakonsuma.com/wp-content/uploads/2025/11/Pediatra.jpg">
+<h2>pediatria</h2>
+<p>La pediatría es la especialidad médica dedicada a la atención integral de la salud de niños y adolescentes, desde el nacimiento hasta la adolescencia. Abarca la prevención, diagnóstico y tratamiento de enfermedades, así como el seguimiento del crecimiento y desarrollo físico, mental y social</p>
+</section>
+	
+
+<section id="ginecologia" class="especialidades-gine">
+<img src="https://clinicacic.com/wp-content/uploads/2023/03/Banner-paginas-servicios4-2.jpg">
+<h2>Ginecología</h2>
+<p>La ginecología es la especialidad médica dedicada al estudio, diagnóstico y tratamiento de las enfermedades del sistema reproductor femenino (útero, vagina, ovarios). Generalmente combinada con la obstetricia (embarazo y parto), aborda la salud de la mujer en todas las etapas, incluyendo patologías como endometriosis, infecciones, cáncer ginecológico, fertilidad y menopausia</p>
+</section>
+
+<section id="dermatologia" class="especialidades">
+<img src="https://www.abedulfarma.com/wp-content/uploads/dermatologia_estetica.jpg">
+<h2>Dermatología</h2>
+<p>especialidad médica dedicada al estudio, diagnóstico, tratamiento y prevención de enfermedades de la piel, pelo, uñas y mucosas, abarcando áreas clínicas, quirúrgicas y estéticas. Los dermatólogos tratan afecciones como acné, psoriasis, dermatitis, infecciones y cáncer de piel, realizando procedimientos como biopsias, dermatoscopia y cirugía cutánea
+	<br><br>
+	Dermatología Clínica: Diagnóstico y tratamiento de enfermedades cutáneas (infecciones, alergias, enfermedades autoinmunes).</p>
+</section>
+
+<section id="traumatologia" class="especilidades">
+<img src="https://www.traumadrid.es/wp-content/uploads/2022/03/Traumatologia.jpg	">
+<h2>Traumatología</h2>
+<p> especialidad médica, a menudo combinada con la ortopedia, dedicada al estudio, prevención, diagnóstico y tratamiento (quirúrgico y no quirúrgico) de las lesiones y enfermedades del aparato locomotor. Aborda huesos, articulaciones, ligamentos, tendones, músculos y nervios, incluyendo fracturas, esguinces, luxaciones y patologías degenerativas
+	<br><br>
+	Diagnóstico: Utiliza exploración física y pruebas de imagen como radiografías, resonancia magnética o tomografía.
+	<br><br>
+	La traumatología trabaja estrechamente con la fisioterapia y la rehabilitación para asegurar la recuperación funcional del paciente</p>
+</section>
+
+<section id="neurologia" class="especialidades">
+<img src="https://www.unl.edu.ar/noticias/img/thumbs/news/64072/Neurologia_bajacalidad-100_vga.jpg"> 
+<h2>Neurología</h2>
+<p>La neurología es una de las especialidades médicas que ofrece un hospital, enfocada en el diagnóstico y tratamiento de enfermedades que afectan el sistema nervioso, incluyendo el cerebro, la médula espinal y los nervios. Esta área atiende padecimientos como migrañas, epilepsia, accidentes cerebrovasculares, Parkinson, Alzheimer y otros trastornos neurológicos. A través de evaluaciones clínicas y estudios especializados, el servicio de neurología busca identificar de manera precisa cada condición para brindar el tratamiento adecuado, con el objetivo de mejorar la salud y la calidad de vida del paciente.
+	<br><br>
+	 Aborda enfermedades como migrañas, epilepsia, alzhéimer, párkinson, ictus y esclerosis múltiple, utilizando pruebas como resonancias magnéticas, TACs y electromiogramas.
+	</p>
+</section>
+			
+<section id="oftalmologia" class="especialidad-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJWwLZm2A9Mojb737BIqv33JsGfs_hC8geBA&s">
+<h2>Oftalmología</h2>
+<p>
+La oftalmología es la especialidad médica dedicada al estudio, diagnóstico y tratamiento de las enfermedades de los ojos y la visión.  
+<br><br>
+Trata problemas visuales como miopía, hipermetropía, astigmatismo, cataratas, glaucoma, infecciones oculares y enfermedades de la retina.  
+<br><br>
+Incluye exámenes de la vista, adaptación de lentes, tratamientos con láser y cirugías oculares avanzadas para mejorar o corregir la visión.  
+<br><br>
+El objetivo principal es preservar la salud visual y prevenir la pérdida de visión mediante diagnósticos tempranos y tratamientos adecuados.
+</p>
+</section>
+
+<!-- DOCTORES -->
+<section id="doctores">
+<h2>Equipo Médico</h2>
+
+<div class="contenedor-doctores">
+
+<div class="doctor">
+<img src="doctor/1.jpg">
+<strong>Dr. Lucio Martinez</strong>
+<p>Cardiólogo</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/2.jpg">
+<strong>Dra. Angelica Gaona</strong>
+<p>Pediatra</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/3.jpg">
+<strong>Dr. Jesus Millel</strong>
+<p>Ginecólogo</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/4.jpg">
+<strong>Dr. Luis Ortiz</strong>
+<p>Traumatólogo</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/5.jpg">
+<strong>Dr. Rafael Corona</strong>
+<p>Dermatólogo</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/6.jpg">
+<strong>Dra. Fernanda Olivares</strong>
+<p>Neumóloga</p>
+</div>
+
+<div class="doctor">
+<img src="doctor/7.jpg">
+<strong>Dra. Jazmín Velazquez</strong>
+<p>Oftalmóloga</p>
+</div>
+
+</div>
+</section>
+
+<!-- EXPEDIENTE -->
+
+<section id="expediente">
+<h2>Expediente Clínico</h2>
+
+<form id="expForm">
+<input type="text" id="nombre" placeholder="Nombre" required>
+<input type="number" id="edad" placeholder="Edad" required>
+<textarea id="historial" placeholder="Historial"></textarea>
+<button type="submit">Guardar</button>
+</form>
+
+<p id="msgExp"></p>
+</section>
+
+<!-- CITAS -->
+
+<section id="citas">
+<h2>Agendar Cita</h2>
+
+<form id="citaForm" onsubmit="enviar(event)">
+<input type="text" id="nomCita" placeholder="Nombre" required>
+<input type="date" required> 
+<input type="time" required>
+<input type="email" placeholder=" Correo" required>
+
+<select>
+<option>Cardiología</option>
+<option>Pediatría</option>
+<option>Ginecologia</option>
+<option>Dermatologia</option>
+<option>Traumatologia</option>
+<option>Neurologia</option>
+<option>Oftamologia</option>
+</select>
+
+<button type="submit">Agendar</button>
+
+</form>
+
+<p id="msgCita"></p>
+</section>
+		
+<!-- contacto -->
+<section id="contacto">
+<h2>Contacto</h2>
+
+<p><i class="fa-solid fa-envelope"></i> contacto@hospital.com</p>
+<p><i class="fa-solid fa-phone"></i> 55 1234 5678</p>
+<p><i class="fa-solid fa-location-dot"></i> Ecatepec, México</p>
+
+<input type="text" placeholder="Nombre">
+<input type="email" placeholder="Correo">
+<textarea placeholder="Mensaje"></textarea>
+
+<button>Enviar</button>
+<script>
+// navegación
+function show(id){
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  let el = document.getElementById(id);
+  if(el) el.classList.add("active");
+}
+
+// expediente
+document.getElementById("expForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let data = {
+    nombre: document.getElementById("nombre").value,
+    edad: document.getElementById("edad").value,
+    historial: document.getElementById("historial").value
+  };
+
+  localStorage.setItem("expediente", JSON.stringify(data));
+  document.getElementById("msgExp").innerText = "Expediente guardado ?";
+});
+
+// citas (Google Sheets)
+const scriptURL = "https://script.google.com/macros/s/AKfycbz7wQUElwVRwPvXOqED6QZWTfGqaeaD_YdDXDm66Nkpxwophz0uX1s0l1s_GlSu-uCz/exec";
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const data = {
+    nombre: form.nombre.value,
+    fecha: form.fecha.value,
+    hora: form.hora.value,
+    correo: form.correo.value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(res => {
+    alert("Enviado correctamente");
+    form.reset();
+  })
+  .catch(err => {
+    console.log(err);
+  });
+});
+</script>
+</body>
+</html>
